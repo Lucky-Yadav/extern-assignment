@@ -40,7 +40,7 @@ function App() {
       <div className="main">
         <div className="images">
           {imagelist?.map((image, index) => (
-            <img src={image} alt="" />
+            <img src={image} alt="" key={index}/>
           ))}
         </div>
         <div className="values">
@@ -60,7 +60,6 @@ function App() {
             ))}
           </div>
         </div>
-        <div className="current">current sequence {list}</div>
         <div className="new">
           <p>
             {" "}
