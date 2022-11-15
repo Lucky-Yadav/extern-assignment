@@ -9,7 +9,7 @@ import image6 from './image6.jpg'
 
 function App() {
   const imagelist = [image1, image2, image3, image4, image5, image6]
-  const [list, setlist] = useState([0, 1, 2, 3, 4, 5]);
+  const [list, setList] = useState([0, 1, 2, 3, 4, 5]);
   const index = [0, 1, 2, 3, 4, 5]
   
   const dragItem = useRef();
@@ -46,7 +46,7 @@ function App() {
         <div className="values">
           <p>drag buttons to set new sequence </p>
           <div className="value">
-            {imagelist.map((image, index) => (
+            {list.map((index) => (
               <div
                 onDragStart={(e) => dragStart(e, index)}
                 onDragEnter={(e) => dragEnter(e, index)}
@@ -54,18 +54,17 @@ function App() {
                 className="number"
                 key={index}
                 draggable
-                onClick={() => setserial(index)}
               >
                 <button>{index}</button>
               </div>
             ))}
           </div>
         </div>
-        <div className="current">current sequence {serial}</div>
+        <div className="current">current sequence {list}</div>
         <div className="new">
           <p>
             {" "}
-            New Sequence <span>{serial}</span>
+            New Sequence <span>{list}</span>
           </p>
         </div>
       </div>
