@@ -9,7 +9,7 @@ import image6 from './image6.jpg'
 
 function App() {
   const imagelist = [image1, image2, image3, image4, image5, image6]
-  const [serial, setserial] = useState([0, 1, 2, 3, 4, 5]);
+  const [list, setlist] = useState([0, 1, 2, 3, 4, 5]);
   const index = [0, 1, 2, 3, 4, 5]
   
   const dragItem = useRef();
@@ -24,6 +24,15 @@ function App() {
       dragOverItem.current = position;
       console.log(e.target.innerHTML);
     };
+   const drop = (e) => {
+     const copyListItems = [...list];
+     const dragItemContent = copyListItems[dragItem.current];
+     copyListItems.splice(dragItem.current, 1);
+     copyListItems.splice(dragOverItem.current, 0, dragItemContent);
+     dragItem.current = null;
+     dragOverItem.current = null;
+     setList(copyListItems);
+   };
   const [isclicked, setIsclicked] = useState("")
   // console.log(index)
   return (
@@ -40,6 +49,8 @@ function App() {
             {imagelist.map((image, index) => (
               <div
                 onDragStart={(e) => dragStart(e, index)}
+                onDragEnter={(e) => dragEnter(e, index)}
+                onDragEnd={drop}
                 className="number"
                 key={index}
                 draggable
