@@ -9,23 +9,17 @@ import image6 from './image6.jpg'
 
 function App() {
   const imagelist = [image1, image2, image3, image4, image5, image6]
-  const [serial, setserial] = useState("012345")
+  const [serial, setserial] = useState([])
   const index = [0,1,2,3,4,5]
   
   const [isclicked, setIsclicked] = useState("")
-
+  // console.log(index)
   return (
     <div className="App">
       <div className="main">
         <div className="images">
           {imagelist?.map((image, index) => (
-            <div
-              className={`image ${isclicked == index ? "" : "hidden"} `}
-              key={image}
-            >
-              <img src={image} alt="" />
-              {index}
-            </div>
+           <img src={image} alt="" />
           ))}
         </div>
         <div className="values">
@@ -35,7 +29,7 @@ function App() {
             </div>
           ))}
         </div>
-      <input type="text" placeholder='serial no without space' onInput={(e) => setserial(e.target.value)}/>
+      <input type="text" placeholder='serial no without space' onInput={(e) => (setserial(e.target.value), console.log(serial))}/>
       </div>
     </div>
   );

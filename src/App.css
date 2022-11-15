@@ -11,6 +11,8 @@
 }
 .images {
   display: flex;
+  gap: 20px;
+  overflow-x: scroll;
 }
 .images img {
   width: 100%;
