@@ -62,7 +62,6 @@ function App() {
         </div>
         <div className="new">
           <p>
-            {" "}
             New Sequence <span>{list}</span>
           </p>
         </div>
