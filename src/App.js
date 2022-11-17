@@ -8,8 +8,14 @@ import image5 from './image5.jpg'
 import image6 from './image6.jpg'
 
 function App() {
-  const imagelist = [image1, image2, image3, image4, image5, image6]
-  const [list, setList] = useState([0, 1, 2, 3, 4, 5]);
+  const [list, setList] = useState([
+    image1,
+    image2,
+    image3,
+    image4,
+    image5,
+    image6,
+  ]);
   const index = [0, 1, 2, 3, 4, 5]
   
   const dragItem = useRef();
@@ -39,22 +45,24 @@ function App() {
     <div className="App">
       <div className="main">
         <div className="images">
-          {imagelist?.map((image, index) => (
-            <img src={image} alt="" key={index}/>
+          {list?.map((image, index) => (
+            <img
+              src={image}
+              alt=""
+              key={index}
+              onDragStart={(e) => dragStart(e, index)}
+              onDragEnter={(e) => dragEnter(e, index)}
+              onDragEnd={drop}
+              className="number"
+              draggable
+            />
           ))}
         </div>
         <div className="values">
           <p>drag buttons to set new sequence </p>
           <div className="value">
             {list.map((index) => (
-              <div
-                onDragStart={(e) => dragStart(e, index)}
-                onDragEnter={(e) => dragEnter(e, index)}
-                onDragEnd={drop}
-                className="number"
-                key={index}
-                draggable
-              >
+              <div>
                 <button>{index}</button>
               </div>
             ))}
