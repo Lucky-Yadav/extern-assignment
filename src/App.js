@@ -59,9 +59,9 @@ function App() {
           ))}
         </div>
         <div className="values">
-          <p>drag buttons to set new sequence </p>
+          <p>drag images to set new sequence </p>
           <div className="value">
-            {list.map((index) => (
+            {list.map((image,index) => (
               <div>
                 <button>{index}</button>
               </div>
@@ -70,7 +70,7 @@ function App() {
         </div>
         <div className="new">
           <p>
-            New Sequence <span>{list}</span>
+            New Sequence <span>{index}</span>
           </p>
         </div>
       </div>
